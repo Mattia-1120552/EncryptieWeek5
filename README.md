@@ -15,6 +15,12 @@ pip install -r requirements.txt
 python app.py
 ```
 
+all gebruik je de fish terminal is de tweede command iets anders
+
+```bash
+source .venv/bin/activate.fish
+```
+
 Open daarna http://127.0.0.1:5000 in je browser.
 
 ## Gebruiken

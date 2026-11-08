@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekst versleutelen</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main>
+        <h1>Tekst versleutelen</h1>
+        <p>Vul tekst in en gebruik een sleutel om deze te versleutelen of ontsleutelen.</p>
+        <form method="post" autocomplete="off">
+            <label for="text">Tekst of versleuteld bericht</label>
+            <textarea id="text" name="text" rows="6" spellcheck="false">{{ text }}</textarea>
+            <label for="key">Sleutel</label>
+            <input id="key" name="key" type="text" value="{{ key }}" spellcheck="false" aria-describedby="key-help">
+            <p id="key-help">Bewaar je sleutel veilig. Je hebt dezelfde sleutel nodig om te ontsleutelen. Een nieuwe sleutel vervangt de sleutel in dit veld.</p>
+            <div class="buttons">
+                <button name="action" value="generate">Genereer sleutel</button>
+                <button name="action" value="encrypt">Versleutel</button>
+                <button name="action" value="decrypt">Ontsleutel</button>
+            </div>
+        </form>
+        {% if error %}
+        <p class="error" role="alert">{{ error }}</p>
+        {% endif %}
+        {% if result %}
+        <label for="result">Resultaat</label>
+        <textarea id="result" rows="6" readonly spellcheck="false">{{ result }}</textarea>
+        <p>Kopieer het resultaat. Plak een versleuteld bericht bovenaan om het met dezelfde sleutel te ontsleutelen.</p>
+        {% endif %}
+    </main>
+</body>
+</html>
